@@ -24,11 +24,7 @@ namespace CMDTNBB {
         }
 
         protected override object GetInstance(Type service, string key) {
-            var instance = container.GetInstance(service, key);
-            if (instance != null)
-                return instance;
-
-            throw new InvalidOperationException("Could not locate any instances.");
+            return container.GetInstance(service, key);
         }
 
         protected override IEnumerable<object> GetAllInstances(Type service) {
@@ -40,7 +36,7 @@ namespace CMDTNBB {
         }
 
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e) {
-            DisplayRootViewFor<IShell>();
+            DisplayRootViewFor<ShellViewModel>();
         }
 
         protected override IEnumerable<Assembly> SelectAssemblies()
